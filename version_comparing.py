@@ -1,6 +1,9 @@
+from functools import total_ordering
+
 from packaging import version
 
 
+@total_ordering
 class Version:
     def __init__(self, vers):
         self.vers = version.parse(vers)
@@ -9,20 +12,8 @@ class Version:
     def __eq__(self, other):
         return self.vers == other
 
-    def __ne__(self, other):
-        return self.vers != other
-
     def __lt__(self, other):
         return self.vers < other
-
-    def __gt__(self, other):
-        return self.vers > other
-
-    def __le__(self, other):
-        return self.vers <= other
-
-    def __ge__(self, other):
-        return self.vers >= other
 
 
 def main():
